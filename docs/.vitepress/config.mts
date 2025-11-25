@@ -4,6 +4,7 @@ export default defineConfig({
     lang: 'en-US',
     title: 'goatmilkkk',
     description: 'personal website for my blog posts & CTF writeups',
+    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
     titleTemplate: false,
     themeConfig: {
         sidebar: [
@@ -35,7 +36,6 @@ export default defineConfig({
         
         search: { provider: 'local' },
         siteTitle: 'Home',
-        logo: '/favicon.ico',
 
         socialLinks: [
             { icon: 'github', link: 'https://github.com/goatmilkkk' },
