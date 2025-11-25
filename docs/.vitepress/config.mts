@@ -35,7 +35,7 @@ export default defineConfig({
         
         search: { provider: 'local' },
         siteTitle: 'Home',
-        logo: '/favico.ico',
+        logo: '/favicon.ico',
 
         socialLinks: [
             { icon: 'github', link: 'https://github.com/goatmilkkk' },
