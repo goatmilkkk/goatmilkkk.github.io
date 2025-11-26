@@ -16,7 +16,7 @@ export default defineConfig({
                         text: 'ASEAN Cyber Shield', 
                         collapsed: true,
                         items: [
-                            { text: 'Pump Guardian (Rev)', link: '/'},
+                            { text: 'pumpguardian (Rev)', link: '/writeups/2025/ASEAN%20Cyber%20Shield/pumpguardian/writeup'},
                             { text: 'Gateway Interface (Pwn)', link: '/'},
                             { text: 'VoIP Stealer (Forensics)', link: '/'},
                             { text: 'Scenario Step5 (Rev, Pwn)', link: '/'},
