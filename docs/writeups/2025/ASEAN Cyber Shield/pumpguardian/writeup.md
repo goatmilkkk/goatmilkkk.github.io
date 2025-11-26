@@ -1,4 +1,4 @@
-# Pump Guardian
+# pumpguardian
 
 > TUI water valve control program where the goal is to input the correct sequence of twelve commands
 
@@ -12,7 +12,7 @@ lsb_release -a
 sudo cp linux_server /usr/local/bin/
 sudo chmod +x /usr/local/bin/linux_server
 
-cd ~/bins/pump-guardian/
+cd ~/bins/pumpguardian/
 chmod u+x ./pump
 linux_server ./pump
 ```
