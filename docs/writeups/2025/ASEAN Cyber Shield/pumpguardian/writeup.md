@@ -8,50 +8,66 @@ improve: ["rust", "function lookup", "flirt", "taint analysis/identify input loc
 
 > TUI water valve control program where the goal is to input the correct sequence of twelve commands
 
-## Remote Debugging
-
-```bash
-wsl -d Ubuntu-24.04
-bash
-lsb_release -a
-
-sudo cp linux_server /usr/local/bin/
-sudo chmod +x /usr/local/bin/linux_server
-
-cd ~/bins/pumpguardian/
-chmod u+x ./pump
-linux_server ./pump
-```
-
-## Solve
+## Triage
 
 Initial triage reveals that the water valve control program is compiled using Rust:
 
 ![image-20251125231709281](images/image-20251125231709281.png)
 
-Since the binary is very large, contains framework code and is coded in Rust, we have to filter out the noise and reduce the scope of our analysis:
+Using `rustbininfo`, we are able to identify that the TUI used is called `ratatui`:
+
+```bash
+Crate(name='ratatui', version='0.26.3')
+```
+
+## Methodology
+
+Since the binary is very large, contains framework code and coded in Rust, we have to <u>filter out the noise and reduce the scope of our analysis</u>:
 
 - Is it possible to skip to the get_flag function directly?
-- Else, pinpoint where the comparison against the twelve commands is made
+- Else, pinpoint how the comparison against the twelve commands is done
 
-I used MCP to speed up the analysis process with the following prompt:
+Now that we know WHAT we should look for, let's tackle HOW we should do it:
+
+1. Binary was compiled with symbols
+
+   - Evident from the fact that searching for `sub_*` yields no results
+   - No need to recover symbols using metadata
+
+   ![image-20251128120845814](images/image-20251128120845814.png)
+
+2. Identify user code in `ratatui` framework
+
+   - Look at GitHub repo -> seems to call a `run()` function
+
+   - Ask AI -> says main loop is usually in `run_app()`
+
+   - <u>Filter by largest function in IDA</u> -> `run_tui_app()`
+
+     ![image-20251128143634043](images/image-20251128143634043.png)
+
+## Analysis
+
+Since `run_tui_app()` is really big, I used MCP to analyze it:
 
 ```
-scope: pump-guardian folder
+scope: pumpguardian folder
+
+overview: This is a Rust TUI app made using ratatui
 
 objective: figure out the correct sequence of twelve commands in order to get the flag
 
-analyze binary, rename variables and functions, comment
+mcp server: analyze binary, rename variables and functions if unnamed, comment
 ```
 
 ```
-call    validate_command_exists;  (+0x8dc7e)
+call    pump::App::get_tag_for_op;  (+0x8dc7e)
 ...
 movzx   r15d, dx // bp AFTER this insn!
 ```
 
 ```
-[mappings] -> obtained from validate_command_exists
+[mappings] -> obtained from pump::App::get_tag_for_op
 7391 start 
 2748 stop 
 1f3e flow 
@@ -77,15 +93,22 @@ Apparently the commands are two-byte IDs
 ```
 
 ```
-honestly the AI was kinda inaccurate, so it's important to test & verify yourself:
-- validate_command_exists was more of a encrypt_command function (view args + return value)
+the AI was kinda inaccurate, so it's important to test & verify byy myself:
+
+Claude analyzed pump::App::get_tag_for_op wrongly:
+-> should view args + return value at runtime
 
 Claude identified the comparison at line 1968: if ( *(v352 + 2 * v358) == v356 )
 -> Comparison doesn't change no matter what command I entered so it's probably wrong
 -> Went to trace backwards from v356 and got the full EXPECTED_COMMANDS_ARRAY
 ```
 
-Honestly, I only managed to solve this challenge because of MCP and a lot of guessing so the writeup is really bad. Not sure if there's a better/proper way to reverse this.
+I only managed to solve this challenge because of MCP and a bunch of guessing so the writeup is really bad. Not sure if there's a better/proper way to reverse this.
 
-Flag: `ACS{R4taTu1i_Is_a_B2sT!!!}` -> https://ratatui.rs/
+Flag: `ACS{R4taTu1i_Is_a_B2sT!!!}`
 
+---
+
+1. What the GCM decrypt does
+2. Where is the comparison of the twelve commands done
+3. Where to find expected commands
