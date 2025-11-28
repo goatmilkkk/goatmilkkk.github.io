@@ -1,5 +1,6 @@
 ---
 tags: ["forensics", "file-dump"]
+date: 2-11-2025
 ---
 
 # RE & Network

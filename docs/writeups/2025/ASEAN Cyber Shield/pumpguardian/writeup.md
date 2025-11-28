@@ -1,3 +1,9 @@
+---
+tags: ["reverse", "rust"]
+date: 25-11-2025
+improve: ["rust", "function lookup", "flirt", "taint analysis/identify input location"]
+---
+
 # pumpguardian
 
 > TUI water valve control program where the goal is to input the correct sequence of twelve commands
@@ -17,13 +23,11 @@ chmod u+x ./pump
 linux_server ./pump
 ```
 
-## Triage
+## Solve
 
-- Initial triage reveals that the water valve control program is compiled using Rust:
+Initial triage reveals that the water valve control program is compiled using Rust:
 
 ![image-20251125231709281](images/image-20251125231709281.png)
-
-## Analysis
 
 Since the binary is very large, contains framework code and is coded in Rust, we have to filter out the noise and reduce the scope of our analysis:
 
@@ -41,13 +45,13 @@ analyze binary, rename variables and functions, comment
 ```
 
 ```
-call    validate_command_exists; 
+call    validate_command_exists;  (+0x8dc7e)
 ...
 movzx   r15d, dx // bp AFTER this insn!
 ```
 
 ```
-[mappings]
+[mappings] -> obtained from validate_command_exists
 7391 start 
 2748 stop 
 1f3e flow 
@@ -73,8 +77,8 @@ Apparently the commands are two-byte IDs
 ```
 
 ```
-honestly the AI  inaccurate, so it's important to test & verify yourself:
-- validatate_command_exists was more of a encrypt_command function
+honestly the AI was kinda inaccurate, so it's important to test & verify yourself:
+- validate_command_exists was more of a encrypt_command function (view args + return value)
 
 Claude identified the comparison at line 1968: if ( *(v352 + 2 * v358) == v356 )
 -> Comparison doesn't change no matter what command I entered so it's probably wrong
