@@ -30,27 +30,29 @@ Since the binary is very large, contains framework code and coded in Rust, we ha
 Now that we know WHAT we should look for, let's tackle HOW we should do it:
 
 1. Binary was compiled with symbols
-
    - Evident from the fact that searching for `sub_*` yields no results
    - No need to recover symbols using metadata
 
    ![image-20251128120845814](images/image-20251128120845814.png)
 
 2. Identify user code in `ratatui` framework
-
    - Look at GitHub repo -> seems to call a `run()` function
-
    - Ask AI -> says main loop is usually in `run_app()`
-
    - <u>Filter by largest function in IDA</u> -> `run_tui_app()`
 
-     ![image-20251128143634043](images/image-20251128143634043.png)
+   ![image-20251128143634043](images/image-20251128143634043.png)
+
+3. Find compared commands
+   - AES GCM decrypt is sus
+
+4. Find out where user input is processed
+   - Breakpoint all the `pump::*` functions which takes in unknown arguments -> view inputs & outputs
 
 ## Analysis
 
 Since `run_tui_app()` is really big, I used MCP to analyze it:
 
-```
+```bash
 scope: pumpguardian folder
 
 overview: This is a Rust TUI app made using ratatui
@@ -60,13 +62,18 @@ objective: figure out the correct sequence of twelve commands in order to get th
 mcp server: analyze binary, rename variables and functions if unnamed, comment
 ```
 
+```bash
+> what functions are called in this function?
+> group by crate, list each unique function once, ignore library functions
 ```
+
+```bash
 call    pump::App::get_tag_for_op;  (+0x8dc7e)
 ...
 movzx   r15d, dx // bp AFTER this insn!
 ```
 
-```
+```bash
 [mappings] -> obtained from pump::App::get_tag_for_op
 7391 start 
 2748 stop 
@@ -75,8 +82,9 @@ movzx   r15d, dx // bp AFTER this insn!
 eefa manual
 ```
 
-```
-Apparently the commands are two-byte IDs
+```bash
+> Apparently the commands are two-byte IDs
+> We can get the following from the first AES GCM decrypt
 
 [heap]:0000555555642090 dw 2748h stop             
 [heap]:0000555555642092 dw 7391h start
@@ -92,23 +100,15 @@ Apparently the commands are two-byte IDs
 [heap]:00005555556420]A6 dw 7391h start // enter commands from bottom to top, params not impt based on testing
 ```
 
-```
-the AI was kinda inaccurate, so it's important to test & verify byy myself:
+```bash
+the AI was kinda inaccurate, so it's important to test & verify by myself:
 
 Claude analyzed pump::App::get_tag_for_op wrongly:
 -> should view args + return value at runtime
 
 Claude identified the comparison at line 1968: if ( *(v352 + 2 * v358) == v356 )
--> Comparison doesn't change no matter what command I entered so it's probably wrong
--> Went to trace backwards from v356 and got the full EXPECTED_COMMANDS_ARRAY
+-> Comparison doesn't change no matter what command I entered so it's probably wrong?
 ```
-
-I only managed to solve this challenge because of MCP and a bunch of guessing so the writeup is really bad. Not sure if there's a better/proper way to reverse this.
 
 Flag: `ACS{R4taTu1i_Is_a_B2sT!!!}`
 
----
-
-1. What the GCM decrypt does
-2. Where is the comparison of the twelve commands done
-3. Where to find expected commands

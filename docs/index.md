@@ -3,13 +3,18 @@
 layout: home
 
 hero:
-  text: "goatmilkkk"
+  text: 'goatmilkkk'
   tagline: welcome to my website!
   actions:
     - theme: brand
-      text: Blog
-      link: "https://goatmilkk.notion.site/Website-7364808a08ed4c4180ca43bedd41a0a3"
+      text: Articles
+      link: 'https://goatmilkk.notion.site/Website-7364808a08ed4c4180ca43bedd41a0a3'
     - theme: alt
       text: Writeups
-      link: "/writeups/2025/Cyber SEA Games/India - Reversing & Network/writeup"
+      link: '/writeups/2025/Cyber SEA Games/India - Reversing & Network/writeup'
+    - theme: alt
+      text: Notes
+      link: '/notes/rust'
+
+
 ---

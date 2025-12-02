@@ -164,5 +164,10 @@
 
 /* Limit max width of docs */
 .VPDoc .content-container {
-  max-width: 900px !important;
+  max-width: 875px !important;
+}
+
+/* Remove bottom margin from list paragraphs */
+.vp-doc li p {
+  margin-bottom: 0;
 }
