@@ -18,7 +18,7 @@ export default defineConfig({
                             collapsed: true,
                             items: [
                                 { text: 'pumpguardian (Rev)', link: '/writeups/2025/ASEAN%20Cyber%20Shield/pumpguardian/writeup'},
-                                { text: 'Gateway Interface (Pwn)', link: '/'},
+                                { text: 'Gateway Interface (Pwn)', link: '/writeups/2025/ASEAN%20Cyber%20Shield/Gateway%20Interface/writeup'},
                                 { text: 'Scenario Step5 (Rev, Pwn)', link: '/'},
                             ]
                         },
@@ -38,17 +38,6 @@ export default defineConfig({
                             items: []
                         }
                     ]
-                },
-                {
-                    text: '2024',
-                    items: [
-                        { 
-                            // finals rev/pwn chall
-                            text: 'LakeCTF', 
-                            collapsed: true,
-                            items: []   
-                        },
-                    ]
                 }
             ],
 
@@ -57,6 +46,7 @@ export default defineConfig({
                     text: 'Notes',
                     items: [
                         { text: 'Remote Debugging', link: '/notes/remote-dbg'},
+                        { text: 'Docker', link: '/notes/docker'},
                         { text: 'Rust', link: '/notes/rust'},
                         { text: 'Mobile', link: '/notes/mobile'},
                     ]
