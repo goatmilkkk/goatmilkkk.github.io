@@ -19,18 +19,10 @@ export default defineConfig({
                             items: [
                                 { text: 'pumpguardian (Rev)', link: '/writeups/2025/ASEAN%20Cyber%20Shield/pumpguardian/writeup'},
                                 { text: 'Gateway Interface (Pwn)', link: '/'},
-                                { text: 'VoIP Stealer (Forensics)', link: '/'},
                                 { text: 'Scenario Step5 (Rev, Pwn)', link: '/'},
-                                { text: 'Silent AIS (Rev, Crypto)', link: '/'},
                             ]
                         },
                         { 
-                            text: 'ICC Tokyo', 
-                            collapsed: true,
-                            items: []
-                        },
-                        { 
-                            // add newline in text using <br>
                             text: 'Cyber SEA Games', 
                             collapsed: true,
                             items: [
@@ -38,18 +30,8 @@ export default defineConfig({
                                 { text: 'Matryoshka (Rev)', link: '/writeups/2025/Cyber%20SEA%20Games/Russia%20-%20Matryoshka/writeup' },
                             ]   
                         },
-                        {
-                            text: 'ASEAN Open', 
-                            collapsed: true,
-                            items: []
-                        },
 
                         // online
-                        {
-                            text: 'N1CTF', 
-                            collapsed: true,
-                            items: []   
-                        },
                         { 
                             text: 'Infobahn', 
                             collapsed: true,
@@ -61,17 +43,7 @@ export default defineConfig({
                     text: '2024',
                     items: [
                         { 
-                            text: 'GeekCon', 
-                            collapsed: true,
-                            items: []
-                        },
-                        { 
-                            text: 'ACSC', 
-                            collapsed: true,
-                            items: []
-                        },
-                        { 
-                            // rev, mobile, finals rev/pwn chall
+                            // finals rev/pwn chall
                             text: 'LakeCTF', 
                             collapsed: true,
                             items: []   
@@ -95,6 +67,11 @@ export default defineConfig({
         
         search: { provider: 'local' },
         siteTitle: 'Home',
+
+        nav: [
+            { text: 'Writeups', link: '/writeups/2025/ASEAN%20Cyber%20Shield/pumpguardian/writeup' },
+            { text: 'Notes', link: '/notes/remote-dbg' },
+        ],
 
         socialLinks: [
             { icon: 'github', link: 'https://github.com/goatmilkkk' },
