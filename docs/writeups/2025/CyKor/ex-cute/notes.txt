@@ -1,0 +1,10 @@
+https://chatgpt.com/share/693806ce-1d30-800f-8cf1-8f6dec36a802
+
+[deobfuscate]
+find input in extracted vm insns
+trace operations that act on it
+
+[vars]
+1018 | (push-accounted top)
+1008 | top1
+FF8 | top2
