@@ -1,4 +1,4 @@
-https://chatgpt.com/share/693806ce-1d30-800f-8cf1-8f6dec36a802
+https://chatgpt.com/share/69394e83-c28c-800f-b7a7-47aa39a333d6
 
 [deobfuscate]
 find input in extracted vm insns
