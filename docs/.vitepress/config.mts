@@ -8,53 +8,81 @@ export default defineConfig({
     titleTemplate: false,
     themeConfig: {
         sidebar: {
-            '/writeups/': [
+            "/writeups/": [
                 {
-                    text: '2025',
-                    items: [
-                        // overseas
-                        { 
-                            text: 'ASEAN Cyber Shield', 
-                            collapsed: true,
-                            items: [
-                                { text: 'pumpguardian (Rev)', link: '/writeups/2025/ASEAN%20Cyber%20Shield/pumpguardian/writeup'},
-                                { text: 'Gateway Interface (Pwn)', link: '/writeups/2025/ASEAN%20Cyber%20Shield/Gateway%20Interface/writeup'},
-                                { text: 'Scenario Step5 (Rev, Pwn)', link: '/'},
+                    "text": "2025",
+                    "items": [
+                        {
+                            "text": "CyKor",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "ex-cute (Rev)",
+                                    "link": "/writeups/2025/CyKor/ex-cute/writeup"
+                                }
                             ]
                         },
-                        { 
-                            text: 'Cyber SEA Games', 
-                            collapsed: true,
-                            items: [
-                                { text: 'RE & Network (Forensics)', link: '/writeups/2025/Cyber%20SEA%20Games/India%20-%20Reversing%20%26%20Network/writeup' },
-                                { text: 'Matryoshka (Rev)', link: '/writeups/2025/Cyber%20SEA%20Games/Russia%20-%20Matryoshka/writeup' },
-                            ]   
+                        {
+                            "text": "ASEAN Cyber Shield",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "Gateway Interface (Pwn, Iot)",
+                                    "link": "/writeups/2025/ASEAN%20Cyber%20Shield/Gateway%20Interface/writeup"
+                                },
+                                {
+                                    "text": "pumpguardian (Rev)",
+                                    "link": "/writeups/2025/ASEAN%20Cyber%20Shield/pumpguardian/writeup"
+                                }
+                            ]
                         },
-
-                        // online
-                        { 
-                            text: 'Infobahn', 
-                            collapsed: true,
-                            items: []
+                        {
+                            "text": "Cyber SEA Games",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "RE & Network (Forensics)",
+                                    "link": "/writeups/2025/Cyber%20SEA%20Games/India%20-%20Reversing%20%26%20Network/writeup"
+                                },
+                                {
+                                    "text": "Matryoshka (Rev)",
+                                    "link": "/writeups/2025/Cyber%20SEA%20Games/Russia%20-%20Matryoshka/writeup"
+                                }
+                            ]
                         }
                     ]
                 }
             ],
-
-            '/notes/': [
-                 {
-                    text: 'Notes',
-                    items: [
-                        { text: 'Remote Debugging', link: '/notes/remote-dbg'},
-                        { text: 'Docker', link: '/notes/docker'},
-                        { text: 'Rust', link: '/notes/rust'},
-                        { text: 'Mobile', link: '/notes/mobile'},
+            "/notes/": [
+                {
+                    "text": "Notes",
+                    "items": [
+                        {
+                            "text": "Docker",
+                            "link": "/notes/docker"
+                        },
+                        {
+                            "text": "Linux",
+                            "link": "/notes/linux"
+                        },
+                        {
+                            "text": "Mobile",
+                            "link": "/notes/mobile"
+                        },
+                        {
+                            "text": "Rust",
+                            "link": "/notes/rust"
+                        },
+                        {
+                            "text": "SEH",
+                            "link": "/notes/seh"
+                        }
                     ]
                 }
             ]
-
         },
-        
+
+
         search: { provider: 'local' },
         siteTitle: 'Home',
 

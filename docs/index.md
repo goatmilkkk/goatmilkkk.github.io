@@ -15,6 +15,4 @@ hero:
     - theme: alt
       text: Notes
       link: '/notes/rust'
-
-
 ---

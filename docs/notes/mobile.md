@@ -1,4 +1,4 @@
-### Mobile Concepts
+### Mobile
 
 > https://www.notion.so/goatmilkk/Mobile-5c861906257f44c085804a86ca230f50
 

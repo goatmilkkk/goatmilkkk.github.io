@@ -1,4 +1,4 @@
-## Rust Terminologies
+# Rust
 
 | Term    | Description                                       |
 | ------- | ------------------------------------------------- |

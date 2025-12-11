@@ -1,5 +1,5 @@
 ---
-tags: ["reverse", "php", "hooking"]
+tags: ["rev", "php", "hooking"]
 date: 2-11-2025
 ---
 
@@ -15,7 +15,6 @@ Before we proceed, let's cover a few terminologies:
 - [uopz](https://github.com/krakjoe/uopz): Exposes user operations for Zend Engine
   - This is what we will be using to hook onto the PHP functions
     - Note that this doesn't work for `eval` since that's a special language construct (i.e. not a function)
-
     ```bash
     # https://github.com/krakjoe/uopz/blob/master/INSTALL.md
     sudo apt-get install php8.1 php8.1-dev

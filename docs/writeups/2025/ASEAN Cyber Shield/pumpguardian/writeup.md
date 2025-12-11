@@ -1,7 +1,6 @@
 ---
-tags: ["reverse", "rust"]
+tags: ["rev", "rust"]
 date: 25-11-2025
-improve: ["rust", "function lookup", "flirt", "taint analysis/identify input location"]
 ---
 
 # pumpguardian
@@ -44,7 +43,6 @@ Now that we know WHAT we should look for, let's tackle HOW we should do it:
 
 3. Find compared commands
    - AES GCM decrypt is sus
-
 4. Find out where user input is processed
    - Breakpoint all the `pump::*` functions which takes in unknown arguments -> view inputs & outputs
 
@@ -61,18 +59,15 @@ objective: figure out the correct sequence of twelve commands in order to get th
 
 mcp server: analyze binary, rename variables and functions if unnamed, comment
 ```
-
 ```bash
 > what functions are called in this function?
 > group by crate, list each unique function once, ignore library functions
 ```
-
 ```bash
 call    pump::App::get_tag_for_op;  (+0x8dc7e)
 ...
 movzx   r15d, dx // bp AFTER this insn!
 ```
-
 ```bash
 [mappings] -> obtained from pump::App::get_tag_for_op
 7391 start 
@@ -81,7 +76,6 @@ movzx   r15d, dx // bp AFTER this insn!
 9122 speed 
 eefa manual
 ```
-
 ```bash
 > Apparently the commands are two-byte IDs
 > We can get the following from the first AES GCM decrypt
@@ -99,7 +93,6 @@ eefa manual
 [heap]:00005555556420A4 dw 9122h speed
 [heap]:00005555556420]A6 dw 7391h start // enter commands from bottom to top, params not impt based on testing
 ```
-
 ```bash
 the AI was kinda inaccurate, so it's important to test & verify by myself:
 
