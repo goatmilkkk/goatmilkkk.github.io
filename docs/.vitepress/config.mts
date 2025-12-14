@@ -13,6 +13,16 @@ export default defineConfig({
                     "text": "2025",
                     "items": [
                         {
+                            "text": "SECCON",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "ez-flag-checker (Rev)",
+                                    "link": "/writeups/2025/SECCON/ez-flag-checker/writeup"
+                                }
+                            ]
+                        },
+                        {
                             "text": "CyKor",
                             "collapsed": true,
                             "items": [
