@@ -155,11 +155,11 @@
   overflow-wrap: anywhere; /* fallback for very long continuous strings */
 }
 
-/* Reference: https://github.com/vuejs/vitepress/discussions/1646#discussioncomment-11486171 */
-
-/* Increase max width of layout */
-:root {
-  --vp-layout-max-width: 1920px;
+/* Keep the wider layout only when the viewport can actually support it. */
+@media (min-width: 1920px) {
+  :root {
+    --vp-layout-max-width: 1920px;
+  }
 }
 
 /* Limit max width of docs */
