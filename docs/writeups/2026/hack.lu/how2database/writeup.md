@@ -1,11 +1,9 @@
-```yaml
+---
 tags: ["web"]
 date: 30-10-2026
-```
+---
 
 # how2database
-
-> hack.lu 2026
 
 ```bash
 Spring Boot: framework to run web servers written in Java
@@ -101,3 +99,4 @@ or set standard_conforming_strings to off and then do SQLi with backslashes
 the second part uses mariadb's redirect_url to make the client connect to a rogue mariadb you can host
 ```
 
+<incomplete>
