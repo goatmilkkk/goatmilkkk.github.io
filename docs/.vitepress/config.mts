@@ -7,8 +7,26 @@ export default defineConfig({
     head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
     titleTemplate: false,
     themeConfig: {
+        outline: {
+            level: [2, 3]
+        },
         sidebar: {
             "/writeups/": [
+                {
+                    "text": "2026",
+                    "items": [
+                        {
+                            "text": "NNS",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "small guy (by 0xle) (Rev)",
+                                    "link": "/writeups/2026/NNS/small%20guy/writeup"
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     "text": "2025",
                     "items": [
@@ -78,6 +96,10 @@ export default defineConfig({
                         {
                             "text": "Mobile",
                             "link": "/notes/mobile"
+                        },
+                        {
+                            "text": "RE",
+                            "link": "/notes/re"
                         },
                         {
                             "text": "Rust",
