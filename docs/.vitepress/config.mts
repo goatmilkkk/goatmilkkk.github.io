@@ -16,22 +16,22 @@ export default defineConfig({
                     "text": "2026",
                     "items": [
                         {
+                            "text": "hack.lu",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "how2database (Web)",
+                                    "link": "/writeups/2026/hack.lu/how2database/writeup"
+                                }
+                            ]
+                        },
+                        {
                             "text": "NNS",
                             "collapsed": true,
                             "items": [
                                 {
                                     "text": "small guy (Rev)",
                                     "link": "/writeups/2026/NNS/small%20guy/writeup"
-                                }
-                            ]
-                        },
-                        {
-                            "text": "hack.lu",
-                            "collapsed": true,
-                            "items": [
-                                {
-                                    "text": "how2database",
-                                    "link": "/writeups/2026/hack.lu/how2database/writeup"
                                 }
                             ]
                         }
