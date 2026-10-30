@@ -20,8 +20,18 @@ export default defineConfig({
                             "collapsed": true,
                             "items": [
                                 {
-                                    "text": "small guy (by 0xle) (Rev)",
+                                    "text": "small guy (Rev)",
                                     "link": "/writeups/2026/NNS/small%20guy/writeup"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "hack.lu",
+                            "collapsed": true,
+                            "items": [
+                                {
+                                    "text": "how2database",
+                                    "link": "/writeups/2026/hack.lu/how2database/writeup"
                                 }
                             ]
                         }
