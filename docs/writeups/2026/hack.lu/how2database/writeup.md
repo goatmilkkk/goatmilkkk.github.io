@@ -99,4 +99,6 @@ or set standard_conforming_strings to off and then do SQLi with backslashes
 the second part uses mariadb's redirect_url to make the client connect to a rogue mariadb you can host
 ```
 
-<incomplete>
+
+
+- INCOMPLETE -
