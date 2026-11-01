@@ -20,6 +20,14 @@ export default defineConfig({
                             "collapsed": true,
                             "items": [
                                 {
+                                    "text": "turbo malloc (Pwn)",
+                                    "link": "/writeups/2026/hack.lu/turbo-malloc/writeup"
+                                },
+                                {
+                                    "text": "declassifier (Pwn)",
+                                    "link": "/writeups/2026/hack.lu/declassifier/writeup"
+                                },
+                                {
                                     "text": "how2database (Web)",
                                     "link": "/writeups/2026/hack.lu/how2database/writeup"
                                 }

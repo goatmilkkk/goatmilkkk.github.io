@@ -11,7 +11,6 @@ date: 31-10-2026
   - oob write bug due to length diff btwn words + no bounds check
     - e.g. buffer is size 17 containing `abcdefgflux<payload>` -> `abcdefg[REDACTED]`payload
     - pushes payload out of buffer, causing overflow
-
 ```c
 static const char *const re = "flux";
 static const char *const replace = "[REDACTED]";
@@ -59,7 +58,6 @@ int main(void) {
 ### Exploit
 
 - no system() or common functions etc -> use syscalls
-
 ```python
 from pwn import *
 import os
